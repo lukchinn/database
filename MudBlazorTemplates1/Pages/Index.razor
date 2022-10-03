@@ -1,0 +1,28 @@
+﻿@page "/"
+
+@using MudBlazorTemplates1.Services
+@using MudBlazorTemplates1.Data
+@inject ICustomerService customerService
+
+@if (data != null)
+{
+    @foreach (customer item in data)
+    {
+        @item.code 
+        @item.name1
+        @item.age
+        @item.brithday
+        <br />
+    }
+}
+
+
+
+@code{
+
+    List<customer> data = new List<customer>();
+    protected override void OnInitialized()
+    {
+        data = customerService.getAllData();
+    }
+}
